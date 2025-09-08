@@ -108,16 +108,19 @@ const HomeScreen = () => {
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         {/* Search and AI Assistant Section */}
-        <View style={styles.searchSection}>
-          <View style={styles.searchBox}>
-            <Text style={styles.searchIcon}>🔍</Text>
-            <TextInput
-              style={styles.searchInput}
-              placeholder="Search for players or matches"
-              placeholderTextColor="#888"
-            />
-          </View>
-        </View>
+  <View style={styles.searchSection}>
+  <View style={styles.searchBox}>
+    <Image
+      source={require("./assets/search.png")} // Replace with your image path
+      style={styles.searchIcon}
+    />
+    <TextInput
+      style={styles.searchInput}
+      placeholder="Find Match"
+      placeholderTextColor="#3B82F6"
+    />
+  </View>
+</View>
 
         <View style={styles.aiSection}>
           <Text style={styles.sectionTitle}>AI Golf Assistant</Text>
@@ -339,6 +342,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: scale(50),
+    paddingHorizontal:scale(20),
     borderColor: "black",
     borderWidth: scale(0.5),
     height: scale(50),
