@@ -1,4 +1,4 @@
-package com.ayonghosh.GolfBuddy
+package com.ayonghosh.golfbuddy
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

@@ -1,26 +1,52 @@
 {
   "expo": {
     "name": "GolfBuddy",
-    "slug": "GolfBuddy",
+    "slug": "golfbuddy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/Logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#111827"
     },
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.ayonghosh.golfbuddy"
     },
     "android": {
+      "package": "com.ayonghosh.golfbuddy",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/Logo.png",
+        "backgroundColor": "#111827"
       },
-      "package": "com.ayonghosh.GolfBuddy"
+      "edgeToEdge": true
     },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#232323",
+          "image": "./assets/Logo.png",
+          "dark": {
+            "image": "./assets/Logo.png",
+            "backgroundColor": "#111827"
+          },
+          "imageWidth": 200
+        }
+      ],
+      [
+        "expo-system-ui",
+        {
+          "android": {
+            "edgeToEdge": true,
+            "statusBarStyle": "dark",
+            "statusBarBackgroundColor": "#111827",
+            "navigationBarBackgroundColor": "#111827"
+          }
+        }
+      ]
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }

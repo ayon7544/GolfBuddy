@@ -1,4 +1,4 @@
-package com.ayonghosh.GolfBuddy
+package com.ayonghosh.golfbuddy
 
 import android.app.Application
 import android.content.res.Configuration
