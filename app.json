@@ -45,7 +45,8 @@
             "navigationBarBackgroundColor": "#111827"
           }
         }
-      ]
+      ],
+      "expo-router"
     ],
     "web": {
       "favicon": "./assets/favicon.png"
