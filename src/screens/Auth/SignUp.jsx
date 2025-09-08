@@ -6,6 +6,11 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../utils/responsive";
@@ -19,7 +24,7 @@ export default function SignUp({ navigation }) {
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
-  // Validate inputs (for enabling/disabling button only)
+  // Validation (for enabling/disabling button only)
   useEffect(() => {
     const newErrors = {};
 
@@ -47,108 +52,123 @@ export default function SignUp({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      {/* Illustration */}
-      <Image source={require("./assets/profile.png")} style={styles.image} />
-
-      {/* Welcome Text */}
-      <Text style={styles.title}>Welcome!</Text>
-      <Text style={styles.subtitle}>Create your GolfMatch Club account</Text>
-
-      {/* UserName Input */}
-      <Text style={styles.label}>User Name</Text>
-      <View style={styles.inputContainer}>
-        <Ionicons
-          name="person-outline"
-          size={scale(20)}
-          color="#888"
-          style={styles.icon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your name"
-          value={userName}
-          onChangeText={setUserName}
-        />
-      </View>
-
-      {/* Email Input */}
-      <Text style={styles.label}>Email</Text>
-      <View style={styles.inputContainer}>
-        <Ionicons
-          name="mail-outline"
-          size={scale(20)}
-          color="#888"
-          style={styles.icon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-      </View>
-
-      {/* Password Input */}
-      <Text style={styles.label}>Password</Text>
-      <View style={styles.inputContainer}>
-        <Ionicons
-          name="lock-closed-outline"
-          size={scale(20)}
-          color="#888"
-          style={styles.icon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-      </View>
-
-      {/* Confirm Password Input */}
-      <Text style={styles.label}>Confirm Password</Text>
-      <View style={styles.inputContainer}>
-        <Ionicons
-          name="lock-closed-outline"
-          size={scale(20)}
-          color="#888"
-          style={styles.icon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Confirm your password"
-          value={confirmPassword}
-          onChangeText={setConfirmPassword}
-          secureTextEntry
-        />
-      </View>
-
-      {/* Sign Up Button */}
-      <TouchableOpacity
-        style={[
-          styles.signUpButton,
-          { backgroundColor: isValid ? "#059266" : "#ccc" },
-        ]}
-        onPress={handleSignUp}
-        disabled={!isValid}
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
       >
-        <Text style={styles.signUpTextButton}>Sign Up</Text>
-      </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            {/* Illustration */}
+            <Image
+              source={require("./assets/profile.png")}
+              style={styles.image}
+            />
 
-      {/* Login Link */}
-      <Text style={styles.footerText}>
-        Already have an account?{" "}
-        <Text
-          style={styles.signInText}
-          onPress={() => navigation.navigate("SignIn")}
-        >
-          Sign In
-        </Text>
-      </Text>
-    </View>
+            {/* Welcome Text */}
+            <Text style={styles.title}>Welcome!</Text>
+            <Text style={styles.subtitle}>Create your GolfMatch Club account</Text>
+
+            {/* UserName Input */}
+            <Text style={styles.label}>User Name</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons
+                name="person-outline"
+                size={scale(20)}
+                color="#888"
+                style={styles.icon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your name"
+                value={userName}
+                onChangeText={setUserName}
+              />
+            </View>
+
+            {/* Email Input */}
+            <Text style={styles.label}>Email</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons
+                name="mail-outline"
+                size={scale(20)}
+                color="#888"
+                style={styles.icon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your email"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+              />
+            </View>
+
+            {/* Password Input */}
+            <Text style={styles.label}>Password</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons
+                name="lock-closed-outline"
+                size={scale(20)}
+                color="#888"
+                style={styles.icon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your password"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+              />
+            </View>
+
+            {/* Confirm Password Input */}
+            <Text style={styles.label}>Confirm Password</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons
+                name="lock-closed-outline"
+                size={scale(20)}
+                color="#888"
+                style={styles.icon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChangeText={setConfirmPassword}
+                secureTextEntry
+              />
+            </View>
+
+            {/* Sign Up Button */}
+            <TouchableOpacity
+              style={[
+                styles.signUpButton,
+                { backgroundColor: isValid ? "#059266" : "#ccc" },
+              ]}
+              onPress={handleSignUp}
+              disabled={!isValid}
+            >
+              <Text style={styles.signUpTextButton}>Sign Up</Text>
+            </TouchableOpacity>
+
+            {/* Login Link */}
+            <Text style={styles.footerText}>
+              Already have an account?{" "}
+              <Text
+                style={styles.signInText}
+                onPress={() => navigation.navigate("SignIn")}
+              >
+                Sign In
+              </Text>
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -157,17 +177,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: scale(20),
-    paddingTop: verticalScale(70),
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: verticalScale(20),
-  },
-  headerTitle: {
-    fontSize: scale(18),
-    fontWeight: "bold",
-    marginLeft: scale(10),
+    paddingTop: verticalScale(50),
   },
   image: {
     alignSelf: "center",

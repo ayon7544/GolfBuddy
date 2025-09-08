@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabs from "./ButtomTabs";
 import SingUp from "../screens/Auth/SignUp";
 import LoginScreen from "../screens/Auth/LoginScreen";
+import FriendsScreen from "../screens/Friends/FriendsScreen";
+import HomeScreen from "../screens/Home/HomeScreen";
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
@@ -16,6 +18,7 @@ export default function RootNavigator() {
       <Stack.Screen name="MainTabs" component={BottomTabs} />
       <Stack.Screen name="SignIn" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SingUp} />
+      <Stack.Screen name="Friends" component={FriendsScreen} />
     </Stack.Navigator>
   );
 }

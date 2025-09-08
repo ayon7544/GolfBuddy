@@ -6,6 +6,11 @@ import {
   TouchableOpacity,
   Image,
   StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { scale, verticalScale } from "../../utils/responsive";
@@ -35,80 +40,97 @@ export default function LoginScreen({ navigation }) {
   const handleSignIn = () => {
     if (isValid) {
       console.log("Login Data:", { email, password });
-      navigation.navigate("Home"); // Navigate to Home or main screen
+      navigation.navigate("MainTabs"); // Navigate to Home or main screen
     }
+  
+
   };
 
   return (
-    <View style={styles.container}>
-      {/* Illustration */}
-      <Image source={require("./assets/profile.png")} style={styles.image} />
-
-      {/* Welcome Text */}
-      <Text style={styles.title}>Welcome Back</Text>
-      <Text style={styles.subtitle}>
-        Sign in to your GolfMatch Club account
-      </Text>
-
-      {/* Email Input */}
-      <Text style={styles.label}>Email</Text>
-      <View style={styles.inputContainer}>
-        <Ionicons
-          name="mail-outline"
-          size={scale(20)}
-          color="#888"
-          style={styles.icon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your email"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-        />
-      </View>
-
-      {/* Password Input */}
-      <Text style={styles.label}>Password</Text>
-      <View style={styles.inputContainer}>
-        <Ionicons
-          name="lock-closed-outline"
-          size={scale(20)}
-          color="#888"
-          style={styles.icon}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Enter your password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-      </View>
-
-      {/* Sign In Button */}
-      <TouchableOpacity
-        style={[
-          styles.signInButton,
-          { backgroundColor: isValid ? "#059266" : "#ccc" },
-        ]}
-        onPress={handleSignIn}
-        disabled={!isValid}
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
       >
-        <Text style={styles.signInText}>Sign In</Text>
-      </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            {/* Illustration */}
+            <Image
+              source={require("./assets/profile.png")}
+              style={styles.image}
+            />
 
-      {/* Sign Up Link */}
-      <Text style={styles.footerText}>
-        Don't have an account?{" "}
-        <Text
-          style={styles.signUpText}
-          onPress={() => navigation.navigate("SignUp")}
-        >
-          Sign Up
-        </Text>
-      </Text>
-    </View>
+            {/* Welcome Text */}
+            <Text style={styles.title}>Welcome Back</Text>
+            <Text style={styles.subtitle}>
+              Sign in to your GolfMatch Club account
+            </Text>
+
+            {/* Email Input */}
+            <Text style={styles.label}>Email</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons
+                name="mail-outline"
+                size={scale(20)}
+                color="#888"
+                style={styles.icon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your email"
+                value={email}
+                onChangeText={setEmail}
+                keyboardType="email-address"
+              />
+            </View>
+
+            {/* Password Input */}
+            <Text style={styles.label}>Password</Text>
+            <View style={styles.inputContainer}>
+              <Ionicons
+                name="lock-closed-outline"
+                size={scale(20)}
+                color="#888"
+                style={styles.icon}
+              />
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your password"
+                value={password}
+                onChangeText={setPassword}
+                secureTextEntry
+              />
+            </View>
+
+            {/* Sign In Button */}
+            <TouchableOpacity
+              style={[
+                styles.signInButton,
+                { backgroundColor: isValid ? "#059266" : "#ccc" },
+              ]}
+              onPress={handleSignIn}
+              disabled={!isValid}
+            >
+              <Text style={styles.signInText}>Sign In</Text>
+            </TouchableOpacity>
+
+            {/* Sign Up Link */}
+            <Text style={styles.footerText}>
+              Don't have an account?{" "}
+              <Text
+                style={styles.signUpText}
+                onPress={() => navigation.navigate("SignUp")}
+              >
+                Sign Up
+              </Text>
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -118,16 +140,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingHorizontal: scale(20),
     paddingTop: verticalScale(100),
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: verticalScale(20),
-  },
-  headerTitle: {
-    fontSize: scale(18),
-    fontWeight: "bold",
-    marginLeft: scale(10),
   },
   image: {
     alignSelf: "center",
