@@ -13,7 +13,7 @@ export default function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name="Auth"
-        component={require("../screens/Auth/LoginScreen").default}
+        component={require("../navigation/ButtomTabs").default}
       />
       <Stack.Screen name="MainTabs" component={BottomTabs} />
       <Stack.Screen name="SignIn" component={LoginScreen} />

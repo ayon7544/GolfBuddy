@@ -182,45 +182,42 @@ const FriendsScreen = ({ navigation }) => {
 
   return (
     <>
-      <Header
-        title="Friends"
-        subtitle="Connect with golf partners"
-        onBack={() => navigation.goBack()}
-      />
-      <View style={styles.container}>
-        <View style={styles.tabBar}>
-          <TouchableOpacity
-            style={[styles.tab, activeTab === "friends" && styles.activeTab]}
-            onPress={() => setActiveTab("friends")}
-          >
-            <Text
-              style={[
-                styles.tabText,
-                activeTab === "friends" && styles.activeTabText,
-              ]}
-            >
-              Friends ({friendsData.length})
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.tab, activeTab === "requests" && styles.activeTab]}
-            onPress={() => setActiveTab("requests")}
-          >
-            <Text
-              style={[
-                styles.tabText,
-                activeTab === "requests" && styles.activeTabText,
-              ]}
-            >
-              Requests ({requestData.length})
-            </Text>
-          </TouchableOpacity>
-        </View>
+      <View style={{ flex: 1, backgroundColor: "#f5f5f5" }}>
+        <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
+          {/* Header will now scroll with content */}
+          <Header title="Friends" subtitle="Connect with golf partners" />
 
-        <ScrollView
-          style={styles.scrollView}
-          showsVerticalScrollIndicator={false}
-        >
+          {/* Tabs */}
+          <View style={styles.tabBar}>
+            <TouchableOpacity
+              style={[styles.tab, activeTab === "friends" && styles.activeTab]}
+              onPress={() => setActiveTab("friends")}
+            >
+              <Text
+                style={[
+                  styles.tabText,
+                  activeTab === "friends" && styles.activeTabText,
+                ]}
+              >
+                Friends ({friendsData.length})
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.tab, activeTab === "requests" && styles.activeTab]}
+              onPress={() => setActiveTab("requests")}
+            >
+              <Text
+                style={[
+                  styles.tabText,
+                  activeTab === "requests" && styles.activeTabText,
+                ]}
+              >
+                Requests ({requestData.length})
+              </Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* List */}
           {activeTab === "friends"
             ? friendsData.map((friend) => (
                 <FriendCard key={friend.id} friend={friend} />
@@ -282,6 +279,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+    marginLeft: scale(10),
+    marginRight: scale(10),
   },
   avatarContainer: {
     width: scale(50),
@@ -303,7 +302,7 @@ const styles = StyleSheet.create({
     color: "#333",
   },
   details: {
-    fontSize: scale(14),
+    fontSize: scale(12),
     color: "#666",
   },
   chatButton: {
