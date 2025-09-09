@@ -13,6 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { scale, verticalScale } from "../../utils/responsive";
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
+import * as Progress from "react-native-progress";
 const HomeScreen = () => {
   const matchSuggestions = [
     {
@@ -81,14 +82,12 @@ const HomeScreen = () => {
         backgroundColor="transparent"
         barStyle="dark-content"
       />
-      <View style={{ flex: 1, backgroundColor: "#f5f5f5" }}>
+      <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
           <View style={styles.header}>
             <View>
               <Text style={styles.headerTitle}>GolfMatch Club</Text>
-              <Text style={styles.headerSubtitle}>
-                Find your next golf buddy
-              </Text>
+              <Text style={styles.headerSubtitle}>AI-Powered Matching</Text>
             </View>
             <View style={styles.headerIcons}>
               <TouchableOpacity style={styles.iconButton}>
@@ -126,9 +125,9 @@ const HomeScreen = () => {
                 Powered by advanced matching algorithms
               </Text>
               <Text style={styles.description}>
-                Book tee-ing with like-minded golfers in your area and beyond,
-                get personal coaching tips and insights. Experience golf like
-                never before today. Your skill level progresses with each shot.
+                Good morning, Test! I've analyzed your preferences and found 0
+                compatible matches for today. Your skill level and playing style
+                are perfect for afternoon rounds.
               </Text>
             </View>
 
@@ -148,7 +147,7 @@ const HomeScreen = () => {
                   style={styles.buttonImage}
                 />
                 <Text style={styles.scheduleText}>My Schedule</Text>
-                <Text style={styles.buttonSubtext}>Upcoming sessions</Text>
+                <Text style={styles.buttonSubtext}>Upcoming rounds</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -235,7 +234,13 @@ const HomeScreen = () => {
                     </View>
                   ))}
                 </View>
-
+                <View style={styles.maxPlayers}>
+                  <Image source={require("./assets/users.png")} />
+                  <Text style={styles.maxPlayersText}>4 Max Players</Text>
+                  <TouchableOpacity style={styles.openToAll}>
+                    <Text style={{ color: "#A855F7" }}>Open to All</Text>
+                  </TouchableOpacity>
+                </View>
                 <View style={styles.matchActions}>
                   <TouchableOpacity style={styles.acceptButton}>
                     <Text style={styles.acceptText}>Accept Match</Text>
@@ -285,9 +290,16 @@ const HomeScreen = () => {
                 </TouchableOpacity>
               </View>
 
-              <Text style={styles.insightsTitle}>
-                Weekly Performance Insights
-              </Text>
+              <View style={styles.insightsHeader}>
+                <Image
+                  source={require("./assets/performance.png")}
+                  style={styles.insightsIcon}
+                />
+                <Text style={styles.insightsTitle}>
+                  Weekly Performance Insights
+                </Text>
+              </View>
+
               <View style={styles.statsRow}>
                 <View style={styles.statItem}>
                   <Text style={styles.statNumbergames}>8</Text>
@@ -298,17 +310,78 @@ const HomeScreen = () => {
                   <Text style={styles.statLabel}>AVG Compatibility</Text>
                 </View>
               </View>
+              <View>
+                <View style={styles.row}>
+                  <Text style={styles.label}>Social Compatibility</Text>
+                  <Text style={[styles.value, { color: "#059568" }]}>
+                    Excellent
+                  </Text>
+                </View>
+                <Progress.Bar
+                  progress={0}
+                  width={null}
+                  color="#059669"
+                  unfilledColor="#E5E5E5"
+                  borderWidth={0}
+                  style={styles.bar}
+                />
+
+                <View style={styles.row}>
+                  <Text style={styles.label}>Social Compatibility</Text>
+                  <Text style={[styles.value, { color: "#EDA50A" }]}>
+                    Very Good
+                  </Text>
+                </View>
+                <Progress.Bar
+                  progress={0}
+                  width={null}
+                  color="#FFA500"
+                  unfilledColor="#E5E5E5"
+                  borderWidth={0}
+                  style={styles.bar}
+                />
+              </View>
             </View>
             <View style={styles.insightItem}>
-              <Text style={styles.insightIcon}>🏌️</Text>
               <View style={styles.insightContent}>
-                <Text style={styles.insightTitle}>
-                  Improve Your Short Game (87% confidence)
-                </Text>
+                <View style={styles.insighFirstLine}>
+                  <Image
+                    source={require("./assets/brain.png")}
+                    style={styles.insightIcon}
+                  ></Image>
+                  <Text style={styles.insightTitle}>
+                    Improve Your Short Game
+                  </Text>
+                  <Text>(87% confidence)</Text>
+                </View>
                 <Text style={styles.insightText}>
-                  Based on your recent rounds at Royal Dublin Golf Club and
-                  performance, focus on chipping practice...
+                  Based on your recent rounds at Royal Dublin and Portmarnock,
+                  focus on chipping practice. Your approach shots are strong,
+                  but you could save 2-3 strokes per round with better short
+                  game technique around the greens.
                 </Text>
+                <Text style={{ color: "#A855F7" }}>technique</Text>
+              </View>
+            </View>
+            <View style={styles.insightItem}>
+              <View style={styles.insightContent}>
+                <View style={styles.insighFirstLine}>
+                  <Image
+                    source={require("./assets/brain.png")}
+                    style={styles.insightIcon}
+                  ></Image>
+                  <Text style={styles.insightTitle}>
+                    Improve Your Short Game
+                  </Text>
+                  <Text>(87% confidence)</Text>
+                </View>
+                <Text style={styles.insightText}>
+                  Based on your recent rounds at Royal Dublin and Portmarnock,
+                  focus on chipping practice. Your approach shots are strong,
+                  but you could save 2-3 strokes per round with better short
+                  game technique around the greens.
+                </Text>
+                <Text style={{ color: "#A855F7" }}>Social</Text>
               </View>
             </View>
           </View>
@@ -319,15 +392,45 @@ const HomeScreen = () => {
               <View key={match.id} style={styles.upcomingMatchCard}>
                 <View style={styles.upcomingMatchInfo}>
                   <Text style={styles.upcomingDate}>{match.date}</Text>
-                  <Text style={styles.upcomingTime}>{match.time}</Text>
-                  <Text style={styles.upcomingCourse}>{match.course}</Text>
-                  <Text style={styles.upcomingPlayers}>
-                    👥 {match.players} Players Confirmed
-                  </Text>
+                  <TouchableOpacity>
+                    <Text style={{ alignSelf: "flex-end", color: "#059669" }}>
+                      Confirm
+                    </Text>
+                  </TouchableOpacity>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: scale(4),
+                    }}
+                  >
+                    <Image
+                      source={require("./assets/time.png")}
+                      style={{
+                        width: scale(16),
+                        height: scale(16),
+                        resizeMode: "contain",
+                      }}
+                    />
+                    <Text style={styles.upcomingTime}>{match.time}</Text>
+                    <Text style={styles.dashN}>•</Text>
+                    <Text style={styles.upcomingCourse}>{match.course}</Text>
+                  </View>
+
+                  <View style={styles.upcomingPlayersContainer}>
+                    <Image
+                      source={require("./assets/users.png")}
+                      style={styles.upcomingPlayersIcon}
+                    />
+                    <Text style={styles.upcomingPlayersText}>
+                      {match.players} Players Confirmed
+                    </Text>
+                  </View>
                 </View>
                 <View style={styles.upcomingActions}>
                   <TouchableOpacity style={styles.groupChatButton}>
-                    <Text style={styles.groupChatText}>👥 Group Chat</Text>
+                    <Image source={require("./assets/Frame.png")} />
+                    <Text style={styles.groupChatButtonText}>Group chat</Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={styles.detailsButton}>
                     <Text style={styles.detailsText}>Details</Text>
@@ -343,6 +446,50 @@ const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  dashN: {
+    fontSize: scale(30),
+    color: "#6B7280",
+    marginHorizontal: scale(4),
+  },
+  groupChatButtonText: {
+    fontSize: scale(17),
+    color: "white",
+  },
+  insighFirstLine: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
+  bar: {
+    height: scale(10),
+    marginBottom: scale(30),
+  },
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: scale(8),
+  },
+  label: {
+    fontSize: scale(14),
+    color: "#666",
+  },
+  value: {
+    fontSize: scale(14),
+    fontWeight: "600",
+  },
+  openToAll: {
+    marginLeft: "auto",
+  },
+  maxPlayersText: {
+    paddingLeft: scale(10),
+    paddingBottom: scale(20),
+    color: "#666",
+  },
+  maxPlayers: {
+    paddingTop: verticalScale(10),
+    flexDirection: "row",
+    width: "100%",
+  },
   generateTextContainer: {
     padding: scale(10),
     paddingHorizontal: scale(20),
@@ -400,7 +547,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: scale(20),
+    padding: scale(10),
   },
   searchSection: {
     paddingVertical: verticalScale(16),
@@ -411,7 +558,7 @@ const styles = StyleSheet.create({
     borderRadius: scale(50),
     paddingHorizontal: scale(20),
     borderColor: "black",
-    borderWidth: scale(0.5),
+    borderWidth: scale(0.1),
     height: scale(50),
   },
   searchIcon: {
@@ -440,7 +587,7 @@ const styles = StyleSheet.create({
     fontSize: scale(20),
     fontWeight: "600",
     color: "#000",
-    marginBottom: verticalScale(5),
+    marginBottom: verticalScale(8),
   },
   sectionSubtitle: {
     fontSize: scale(14),
@@ -503,6 +650,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: verticalScale(10),
+    paddingLeft: scale(10),
   },
   smartButton: {
     flexDirection: "row",
@@ -609,6 +757,7 @@ const styles = StyleSheet.create({
   },
   playerHandicap: {
     fontSize: scale(14),
+    paddingTop: scale(5),
     color: "#666",
     marginBottom: verticalScale(2),
   },
@@ -651,6 +800,7 @@ const styles = StyleSheet.create({
     fontSize: scale(14),
   },
   profileButton: {
+    flex: 1,
     paddingHorizontal: scale(20),
     paddingVertical: scale(12),
     borderRadius: scale(8),
@@ -666,8 +816,7 @@ const styles = StyleSheet.create({
   insightsCard: {
     backgroundColor: "#fff",
     borderRadius: scale(15),
-    padding: scale(20),
-    borderWidth: 1,
+    padding: scale(10),
     borderColor: "#f0f0f0",
   },
   insightsTitle: {
@@ -680,10 +829,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: verticalScale(15),
+    alignItems: "center",
   },
   statItem: {
-    flex: 1,
+    // flex: 1,
     alignItems: "center",
+    // backgroundColor: "red",
   },
   statNumber: {
     fontSize: scale(30),
@@ -718,13 +869,36 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     marginTop: verticalScale(15),
+    paddingHorizontal: scale(10),
+    paddingVertical: scale(10),
     gap: scale(12),
+    borderRadius: scale(10),
+    borderWidth: scale(1),
+    borderColor: "rgba(237, 165, 10, 0.3)", // 30% opacity
   },
   insightIcon: {
-    fontSize: scale(20),
+    // fontSize: scale(50),
+    // margin: scale(5),
   },
   insightContent: {
     flex: 1,
+  },
+
+  insightsHeader: {
+    flexDirection: "row",
+    alignItems: "center", // vertically center the image & text
+    gap: scale(10), // add space between image and text (or use margin)
+    marginBottom: verticalScale(15),
+  },
+  insightsIcon: {
+    width: scale(24), // adjust size as needed
+    height: scale(24),
+    resizeMode: "contain",
+  },
+  insightsTitle: {
+    fontSize: scale(16),
+    fontWeight: "bold",
+    color: "#000",
   },
   insightTitle: {
     fontSize: scale(14),
@@ -733,7 +907,7 @@ const styles = StyleSheet.create({
     marginBottom: verticalScale(4),
   },
   insightText: {
-    fontSize: scale(12),
+    fontSize: scale(13),
     color: "#666",
     lineHeight: verticalScale(16),
   },
@@ -752,20 +926,18 @@ const styles = StyleSheet.create({
     fontSize: scale(14),
     fontWeight: "600",
     color: "#000",
-    marginBottom: verticalScale(2),
   },
   upcomingTime: {
     fontSize: scale(12),
     color: "#666",
-    marginBottom: verticalScale(2),
   },
   upcomingCourse: {
     fontSize: scale(12),
     color: "#666",
-    marginBottom: verticalScale(4),
   },
   upcomingPlayers: {
     fontSize: scale(12),
+
     color: "#666",
   },
   upcomingActions: {
@@ -775,9 +947,12 @@ const styles = StyleSheet.create({
   groupChatButton: {
     flex: 1,
     backgroundColor: "#3B82F6",
+    flexDirection: "row",
     padding: scale(10),
     borderRadius: scale(8),
+    gap: scale(15),
     alignItems: "center",
+    justifyContent: "center",
   },
   groupChatText: {
     color: "#fff",
@@ -794,8 +969,25 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     color: "#374151",
-    fontSize: scale(12),
+    fontSize: scale(17),
     fontWeight: "500",
+  },
+  upcomingPlayersContainer: {
+    flexDirection: "row", // horizontal alignment
+    alignItems: "center", // vertical alignment
+    gap: 4, // optional spacing between image and text
+    paddingTop: scale(20),
+  },
+
+  upcomingPlayersIcon: {
+    width: 16, // adjust to your icon size
+    height: 16,
+    resizeMode: "contain",
+  },
+
+  upcomingPlayersText: {
+    fontSize: 14,
+    color: "#666", // your desired color
   },
 });
 
