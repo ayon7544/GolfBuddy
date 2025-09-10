@@ -40,7 +40,7 @@
         {
           "android": {
             "edgeToEdge": true,
-            "statusBarStyle": "dark",
+            "statusBarStyle": "dark-content",
             "statusBarBackgroundColor": "#111827",
             "navigationBarBackgroundColor": "#111827"
           }
@@ -50,7 +50,8 @@
       "expo-font"
     ],
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     }
   }
 }
