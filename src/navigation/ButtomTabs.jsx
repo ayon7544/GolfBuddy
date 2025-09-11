@@ -64,11 +64,31 @@ export default function BottomTabs() {
         tabBarInactiveTintColor: "#565656",
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} options={{ tabBarLabel: "Home" }} />
-      <Tab.Screen name="Search" component={SearchScreen} options={{ tabBarLabel: "Search" }} />
-      <Tab.Screen name="My Game" component={MyGameScreen} options={{ tabBarLabel: "My Game" }} />
-      <Tab.Screen name="Friends" component={FriendsScreen} options={{ tabBarLabel: "Friends" }} />
-      <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarLabel: "Profiles" }} />
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ tabBarLabel: "Home", animation: "none" }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{ tabBarLabel: "Search", animation: "none" }}
+      />
+      <Tab.Screen
+        name="My Game"
+        component={MyGameScreen}
+        options={{ tabBarLabel: "My Game", animation: "none" }}
+      />
+      <Tab.Screen
+        name="Friends"
+        component={FriendsScreen}
+        options={{ tabBarLabel: "Friends", animation: "none" }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{ tabBarLabel: "Profiles", animation: "none" }}
+      />
     </Tab.Navigator>
   );
 }

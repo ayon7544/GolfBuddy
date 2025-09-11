@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-export default function ProfileScreen() {
+export default function ProfileScreen({ navigation }) {
   return (
     <View className="flex-1">
       <View className="bg-[#059669] h-[13.17%] w-full justify-end">
@@ -22,7 +22,10 @@ export default function ProfileScreen() {
             source={require("./assets/image.jpg")}
             className="w-24 h-24 rounded-full border-2 border-[#ffffff]"
           />
-          <TouchableOpacity className="absolute bottom-0 right-0 bg-[#949393CF] w-10 h-10 rounded-full flex items-center justify-center">
+          <TouchableOpacity
+            className="absolute bottom-0 right-0 bg-[#949393CF] w-10 h-10 rounded-full flex items-center justify-center"
+            onPress={() => navigation.navigate("EditProfileScreen")}
+          >
             <Image source={require("./assets/edit.png")} className="w-6 h-6" />
           </TouchableOpacity>
         </View>

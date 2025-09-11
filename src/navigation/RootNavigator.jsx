@@ -4,21 +4,47 @@ import BottomTabs from "./ButtomTabs";
 import SingUp from "../screens/Auth/SignUp";
 import LoginScreen from "../screens/Auth/LoginScreen";
 import FriendsScreen from "../screens/Friends/FriendsScreen";
-import HomeScreen from "../screens/Home/HomeScreen";
+import EditProfileScreen from "../screens/Profile/EditProfileScreen";
+
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
   return (
-    // RootNavigator.js
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="BottomTabs" // <-- this decides the first screen
+      options={{ animation: "none" }}
+    >
       <Stack.Screen
-        name="Auth"
-        component={require("../navigation/ButtomTabs").default}
+        name="BottomTabs"
+        component={BottomTabs}
+        options={{ animation: "none" }}
       />
-      <Stack.Screen name="MainTabs" component={BottomTabs} />
-      <Stack.Screen name="SignIn" component={LoginScreen} />
-      <Stack.Screen name="SignUp" component={SingUp} />
-      <Stack.Screen name="Friends" component={FriendsScreen} />
+      <Stack.Screen
+        name="MainTabs"
+        component={BottomTabs}
+        options={{ animation: "none" }}
+      />
+      <Stack.Screen
+        name="SignIn"
+        component={LoginScreen}
+        options={{ animation: "none" }}
+      />
+      <Stack.Screen
+        name="SignUp"
+        component={SingUp}
+        options={{ animation: "none" }}
+      />
+      <Stack.Screen
+        name="Friends"
+        component={FriendsScreen}
+        options={{ animation: "none" }}
+      />
+      <Stack.Screen
+        name="EditProfileScreen"
+        component={EditProfileScreen}
+        options={{ animation: "none" }}
+      />
     </Stack.Navigator>
   );
 }
