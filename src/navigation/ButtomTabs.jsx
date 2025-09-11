@@ -67,27 +67,27 @@ export default function BottomTabs() {
       <Tab.Screen
         name="Home"
         component={HomeScreen}
-        options={{ tabBarLabel: "Home", animation: "none" }}
+        options={{ tabBarLabel: "Home" }}
       />
       <Tab.Screen
         name="Search"
         component={SearchScreen}
-        options={{ tabBarLabel: "Search", animation: "none" }}
+        options={{ tabBarLabel: "Search" }}
       />
       <Tab.Screen
         name="My Game"
         component={MyGameScreen}
-        options={{ tabBarLabel: "My Game", animation: "none" }}
+        options={{ tabBarLabel: "My Game" }}
       />
       <Tab.Screen
         name="Friends"
         component={FriendsScreen}
-        options={{ tabBarLabel: "Friends", animation: "none" }}
+        options={{ tabBarLabel: "Friends" }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
-        options={{ tabBarLabel: "Profiles", animation: "none" }}
+        options={{ tabBarLabel: "Profiles" }}
       />
     </Tab.Navigator>
   );

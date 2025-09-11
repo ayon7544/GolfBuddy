@@ -13,38 +13,13 @@ export default function RootNavigator() {
     <Stack.Navigator
       screenOptions={{ headerShown: false }}
       initialRouteName="BottomTabs" // <-- this decides the first screen
-      options={{ animation: "none" }}
     >
-      <Stack.Screen
-        name="BottomTabs"
-        component={BottomTabs}
-        options={{ animation: "none" }}
-      />
-      <Stack.Screen
-        name="MainTabs"
-        component={BottomTabs}
-        options={{ animation: "none" }}
-      />
-      <Stack.Screen
-        name="SignIn"
-        component={LoginScreen}
-        options={{ animation: "none" }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SingUp}
-        options={{ animation: "none" }}
-      />
-      <Stack.Screen
-        name="Friends"
-        component={FriendsScreen}
-        options={{ animation: "none" }}
-      />
-      <Stack.Screen
-        name="EditProfileScreen"
-        component={EditProfileScreen}
-        options={{ animation: "none" }}
-      />
+      <Stack.Screen name="BottomTabs" component={BottomTabs} />
+      <Stack.Screen name="MainTabs" component={BottomTabs} />
+      <Stack.Screen name="SignIn" component={LoginScreen} />
+      <Stack.Screen name="SignUp" component={SingUp} />
+      <Stack.Screen name="Friends" component={FriendsScreen} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
     </Stack.Navigator>
   );
 }

@@ -21,6 +21,7 @@ export default function LoginScreen({ navigation }) {
 
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   // Validation (for enabling/disabling button only)
   useEffect(() => {
@@ -42,8 +43,6 @@ export default function LoginScreen({ navigation }) {
       console.log("Login Data:", { email, password });
       navigation.navigate("MainTabs"); // Navigate to Home or main screen
     }
-  
-
   };
 
   return (
@@ -101,8 +100,15 @@ export default function LoginScreen({ navigation }) {
                 placeholder="Enter your password"
                 value={password}
                 onChangeText={setPassword}
-                secureTextEntry
+                secureTextEntry={!showPassword} // toggle visibility
               />
+              <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                <Ionicons
+                  name={showPassword ? "eye-off-outline" : "eye-outline"}
+                  size={scale(20)}
+                  color="#888"
+                />
+              </TouchableOpacity>
             </View>
 
             {/* Sign In Button */}
@@ -173,6 +179,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: scale(10),
     marginBottom: verticalScale(30),
     height: verticalScale(50),
+    justifyContent: "space-between", // so icon stays at end
   },
   icon: {
     marginRight: scale(8),
@@ -180,6 +187,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     fontSize: scale(14),
+    paddingRight: scale(8), // spacing before eye
   },
   signInButton: {
     paddingVertical: verticalScale(14),
