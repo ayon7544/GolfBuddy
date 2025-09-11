@@ -250,7 +250,7 @@ const styles = StyleSheet.create({
     paddingVertical: verticalScale(5),
     borderRadius: scale(10),
     borderWidth: scale(0.5),
-    borderColor: "black",
+    borderColor: "#D5D5D5",
     margin: scale(5),
   },
   activeTab: {
@@ -258,8 +258,7 @@ const styles = StyleSheet.create({
   },
   tabText: {
     fontSize: scale(16),
-    fontWeight: "bold",
-    color: "#111827",
+    color: "",
   },
   activeTabText: {
     color: "#fff",
@@ -273,12 +272,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: scale(10),
     padding: scale(15),
-    marginBottom: verticalScale(10),
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    borderWidth: scale(1),
+    borderColor: "#E8E8E8",
+    marginBottom: verticalScale(5),
     marginLeft: scale(10),
     marginRight: scale(10),
   },
@@ -295,10 +291,12 @@ const styles = StyleSheet.create({
   infoContainer: {
     flex: 1,
     marginLeft: scale(15),
+    justifyContent: "space-between",
   },
   name: {
-    fontSize: scale(18),
-    fontWeight: "600",
+    fontSize: scale(14),
+    fontWeight: "400",
+    marginBottom: scale(10),
     color: "#333",
   },
   details: {
@@ -308,12 +306,12 @@ const styles = StyleSheet.create({
   chatButton: {
     backgroundColor: "#3B82F6",
     paddingVertical: verticalScale(8),
-    paddingHorizontal: scale(18),
+    paddingHorizontal: scale(24),
     borderRadius: scale(10),
   },
   chatButtonText: {
     color: "#fff",
-    fontWeight: "bold",
+
     fontSize: scale(16),
   },
 });
