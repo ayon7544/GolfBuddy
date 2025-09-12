@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }) {
   const handleSignIn = () => {
     if (isValid) {
       console.log("Login Data:", { email, password });
-      navigation.navigate("MainTabs"); // Navigate to Home or main screen
+      navigation.navigate("BottomTabs"); // Navigate to Home or main screen
     }
   };
 
