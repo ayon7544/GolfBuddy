@@ -14,7 +14,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
 import * as Progress from "react-native-progress";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   const matchSuggestions = [
     {
@@ -121,7 +121,10 @@ const HomeScreen = () => {
             </View>
 
             <View className="flex-row" style={{ gap: scale(25) }}>
-              <TouchableOpacity style={{ padding: scale(5) }}>
+              <TouchableOpacity
+                style={{ padding: scale(5) }}
+                onPress={() => navigation.getParent().openDrawer()}
+              >
                 <Image
                   source={require("./assets/3line.png")}
                   style={{
