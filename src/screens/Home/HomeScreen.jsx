@@ -13,7 +13,6 @@ import { scale, verticalScale } from "../../utils/responsive";
 import { LinearGradient } from "expo-linear-gradient";
 import MaskedView from "@react-native-masked-view/masked-view";
 import * as Progress from "react-native-progress";
-
 const HomeScreen = ({ navigation }) => {
   const insets = useSafeAreaInsets();
   const matchSuggestions = [
@@ -134,7 +133,10 @@ const HomeScreen = ({ navigation }) => {
                   }}
                 />
               </TouchableOpacity>
-              <TouchableOpacity style={{ padding: scale(5) }}>
+              <TouchableOpacity
+                style={{ padding: scale(5) }}
+                onPress={() => navigation.navigate("Notifications")}
+              >
                 <Image
                   source={require("./assets/bell.png")}
                   style={{

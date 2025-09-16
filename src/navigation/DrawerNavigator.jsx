@@ -16,6 +16,7 @@ import SignUp from "../screens/Auth/SignUp";
 import EditProfileScreen from "../screens/Profile/EditProfileScreen";
 import FriendsScreen from "../screens/Friends/FriendsScreen";
 import CreateMatch from "../screens/Search/CreateMatch";
+import Notifications from "../screens/Notifications/Notifications";
 const Drawer = createDrawerNavigator();
 
 // Custom drawer content with full background and "Menu" header
@@ -63,7 +64,7 @@ function CustomDrawerContent(props) {
 export default function DrawerNavigator() {
   return (
     <Drawer.Navigator
-      initialRouteName="CreateMatch"
+      initialRouteName="HomeTabs"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
@@ -89,6 +90,7 @@ export default function DrawerNavigator() {
       <Drawer.Screen name="Friends" component={FriendsScreen} />
       <Drawer.Screen name="EditProfileScreen" component={EditProfileScreen} />
       <Drawer.Screen name="CreateMatch" component={CreateMatch} />
+      <Drawer.Screen name="Notifications" component={Notifications} />
     </Drawer.Navigator>
   );
 }
