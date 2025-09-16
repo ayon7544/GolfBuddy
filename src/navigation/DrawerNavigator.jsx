@@ -64,7 +64,7 @@ function CustomDrawerContent(props) {
 export default function DrawerNavigator() {
   return (
     <Drawer.Navigator
-      initialRouteName="HomeTabs"
+      initialRouteName="AccountSettings"
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
